@@ -3,8 +3,30 @@
 
 #include <iostream>
 
-int main() {
-    std::cout << "Hello World!\n";
+#include "argument_parser.hpp"
+
+SE7::argument_parser arg_parser = {
+	{ "-flag1", { SE7::argument() } },
+	{ "-flag2", { SE7::argument(), SE7::argument() } },
+	{ "-flag3", { SE7::argument(), SE7::argument(), SE7::argument() } },
+};
+
+int main(int argc, const char *argv[]) {
+	const char *argv2[] = { 
+		"-flag1", "arg1", 
+		"-flag2", "arg1", "arg2", 
+		"-flag3", "arg1", "arg2", "arg3"
+	};
+
+	int argc2 = sizeof(argv2) / sizeof(const char *);
+
+	try {
+		arg_parser.parse(argc2, argv2);
+	} catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
