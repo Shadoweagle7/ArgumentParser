@@ -98,7 +98,7 @@ namespace SE7 {
 					i += j;
 				} catch (const std::out_of_range &e_oor) {
 					throw unknown_argument(argv[i]);
-				} catch (const too_many_arguments &e_tma) {
+				} catch (const not_enough_arguments &e_tma) {
 					throw e_tma;
 				}
 			}
@@ -125,7 +125,7 @@ namespace SE7 {
 					i += j;
 				} catch (const std::out_of_range &e_oor) {
 					throw unknown_argument(args[i]);
-				} catch (const too_many_arguments &e_tma) {
+				} catch (const not_enough_arguments &e_tma) {
 					throw e_tma;
 				}
 			}
@@ -152,7 +152,7 @@ namespace SE7 {
 					i += j;
 				} catch (const std::out_of_range &e_oor) {
 					throw unknown_argument(args[i]);
-				} catch (const too_many_arguments &e_tma) {
+				} catch (const not_enough_arguments &e_tma) {
 					throw e_tma;
 				}
 			}
@@ -178,7 +178,7 @@ namespace SE7 {
 					i += j;
 				} catch (const std::out_of_range &e_oor) {
 					throw unknown_argument(args[i]);
-				} catch (const too_many_arguments &e_tma) {
+				} catch (const not_enough_arguments &e_tma) {
 					throw e_tma;
 				}
 			}
