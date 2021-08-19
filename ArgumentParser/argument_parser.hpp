@@ -106,16 +106,82 @@ namespace SE7 {
 
 		template<size_t N>
 		void parse(std::string (&args)[N]) {
+			size_t i = 0;
 
+			for (; i < N; i++) {
+				try {
+					std::vector<argument> &v_a = this->m_msa.at(args[i]);
+
+					size_t j = 0;
+
+					for (; j < v_a.size(); j++) {
+						if (i + j + 1 == N) {
+							throw not_enough_arguments(args[i]);
+						}
+
+						v_a[j].set_value(args[i + j + 1]);
+					}
+
+					i += j;
+				} catch (const std::out_of_range &e_oor) {
+					throw unknown_argument(args[i]);
+				} catch (const too_many_arguments &e_tma) {
+					throw e_tma;
+				}
+			}
 		}
 
 		template<size_t N>
 		void parse(std::array<std::string, N> args) {
+			size_t i = 0;
 
+			for (; i < N; i++) {
+				try {
+					std::vector<argument> &v_a = this->m_msa.at(args[i]);
+
+					size_t j = 0;
+
+					for (; j < v_a.size(); j++) {
+						if (i + j + 1 == N) {
+							throw not_enough_arguments(args[i]);
+						}
+
+						v_a[j].set_value(args[i + j + 1]);
+					}
+
+					i += j;
+				} catch (const std::out_of_range &e_oor) {
+					throw unknown_argument(args[i]);
+				} catch (const too_many_arguments &e_tma) {
+					throw e_tma;
+				}
+			}
 		}
 
 		void parse(std::vector<std::string> args) {
+			size_t i = 0;
 
+			for (; i < args.size(); i++) {
+				try {
+					std::vector<argument> &v_a = this->m_msa.at(args[i]);
+
+					size_t j = 0;
+
+					for (; j < v_a.size(); j++) {
+						if (i + j + 1 == args.size()) {
+							throw not_enough_arguments(args[i]);
+						}
+
+						v_a[j].set_value(args[i + j + 1]);
+					}
+
+					i += j;
+				} catch (const std::out_of_range &e_oor) {
+					throw unknown_argument(args[i]);
+				} catch (const too_many_arguments &e_tma) {
+					throw e_tma;
+				}
+			}
 		}
 	};
 }
