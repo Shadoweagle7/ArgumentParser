@@ -22,6 +22,14 @@ int main(int argc, const char *argv[]) {
 
 	try {
 		arg_parser.parse(argc2, argv2);
+
+		for (std::pair<const std::string, std::vector<SE7::argument>> &p : arg_parser) {
+			std::cout << p.first << "\n";
+
+			for (SE7::argument &arg : p.second) {
+				std::cout << "\t" << arg.get_value() << "\n";
+			}
+		}
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}

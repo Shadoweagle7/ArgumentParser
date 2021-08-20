@@ -78,6 +78,18 @@ namespace SE7 {
 			this->m_msa = p_i_list_psa;
 		}
 
+		std::map<std::string, std::vector<argument>>::iterator begin() {
+			return this->m_msa.begin();
+		}
+
+		std::map<std::string, std::vector<argument>>::iterator end() {
+			return this->m_msa.end();
+		}
+
+		std::vector<argument> &operator[](const std::string &key) {
+			return this->m_msa[key];
+		}
+
 		void parse(int argc, const char *argv[]) {
 			int i = 0;
 
